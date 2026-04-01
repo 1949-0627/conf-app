@@ -407,11 +407,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   <div class="spacer"></div>
   <div class="guide-tip">
     <span class="icon">⚙️</span>
-    <span>スタッフ名と施設名を設定すると、アクション作成時のドロップダウンに反映されます。</span>
-  </div>
-  <div class="form-group">
-    <label class="form-label">🏥 施設名</label>
-    <input type="text" class="form-input" id="set-facility" placeholder="例：ホームシェアリー徳力">
+    <span>スタッフ名を設定すると、アクション作成時のドロップダウンに反映されます。</span>
   </div>
   <div class="form-group">
     <label class="form-label">👥 スタッフ名 <span class="hint">改行で複数入力</span></label>
@@ -419,7 +415,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   </div>
   <div class="form-group">
     <label class="form-label">👔 上司名（承認者） <span class="hint">改行で複数入力</span></label>
-    <textarea class="form-input" id="set-managers" placeholder="例：&#10;みつお&#10;長谷川" style="min-height:100px"></textarea>
+    <textarea class="form-input" id="set-managers" placeholder="例：&#10;長谷川知世&#10;椛島和子" style="min-height:100px"></textarea>
   </div>
   <div class="spacer-sm"></div>
   <button class="btn btn-primary btn-full" onclick="saveSettings()">💾 設定を保存</button>
@@ -472,7 +468,7 @@ const DB = {
 };
 
 function getSettings() {
-  return DB.get('settings', { facility: '', staff: [], managers: [] });
+  return DB.get('settings', { staff: [], managers: [] });
 }
 function getConferences() { return DB.get('conferences', []); }
 function getActions() { return DB.get('actions', []); }
@@ -1005,14 +1001,12 @@ function deleteConf(id) {
 // ===== SETTINGS =====
 function loadSettings() {
   const s = getSettings();
-  document.getElementById('set-facility').value = s.facility || '';
   document.getElementById('set-staff').value = (s.staff || []).join('\n');
   document.getElementById('set-managers').value = (s.managers || []).join('\n');
 }
 
 function saveSettings() {
   const s = {
-    facility: document.getElementById('set-facility').value.trim(),
     staff: document.getElementById('set-staff').value.split('\n').map(x => x.trim()).filter(Boolean),
     managers: document.getElementById('set-managers').value.split('\n').map(x => x.trim()).filter(Boolean),
   };
