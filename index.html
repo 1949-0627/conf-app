@@ -11,112 +11,36 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --c-bg: #f4f6fb;
-  --c-surface: #ffffff;
-  --c-surface2: #f8f9fd;
-  --c-surface3: #eef1f8;
-  --c-primary: #2d5be3;
-  --c-primary-lt: #e8eefb;
-  --c-primary-dk: #1a3a9e;
-  --c-accent: #0d9488;
-  --c-accent-lt: #ccfbf1;
-  --c-warn: #e67e22;
-  --c-warn-lt: #fef3e2;
-  --c-danger: #e74c3c;
-  --c-danger-lt: #fce4e4;
-  --c-success: #27ae60;
-  --c-success-lt: #e0f5ea;
-  --c-purple: #8b5cf6;
-  --c-purple-lt: #ede9fe;
-  --c-text: #1e293b;
-  --c-text2: #64748b;
-  --c-text3: #94a3b8;
-  --c-border: #e2e8f0;
-  --c-border2: #cbd5e1;
-  --r: 16px;
-  --r-sm: 10px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
-  --shadow-xl: 0 8px 40px rgba(0,0,0,0.14);
-  --font: 'Zen Kaku Gothic New', -apple-system, 'Hiragino Sans', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
-}
+:root{--c-bg:#f4f6fb;--c-surface:#fff;--c-surface2:#f8f9fd;--c-surface3:#eef1f8;--c-primary:#2d5be3;--c-primary-lt:#e8eefb;--c-primary-dk:#1a3a9e;--c-accent:#0d9488;--c-accent-lt:#ccfbf1;--c-warn:#e67e22;--c-warn-lt:#fef3e2;--c-danger:#e74c3c;--c-danger-lt:#fce4e4;--c-success:#27ae60;--c-success-lt:#e0f5ea;--c-purple:#8b5cf6;--c-purple-lt:#ede9fe;--c-text:#1e293b;--c-text2:#64748b;--c-text3:#94a3b8;--c-border:#e2e8f0;--c-border2:#cbd5e1;--r:16px;--r-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.06);--font:'Zen Kaku Gothic New',-apple-system,'Hiragino Sans',sans-serif;--mono:'JetBrains Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
 body{font-family:var(--font);background:var(--c-bg);color:var(--c-text);min-height:100vh;min-height:100dvh;overflow-x:hidden}
 button,input,select,textarea{font-family:var(--font);font-size:inherit}
 input,textarea,select{-webkit-appearance:none;appearance:none}
-
-/* ===== APP SHELL ===== */
 .app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;padding-bottom:80px}
-
-/* ===== HEADER ===== */
-.hdr{
-  background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);
-  color:#fff;padding:0 20px;
-  padding-top:calc(env(safe-area-inset-top) + 12px);
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;gap:10px;
-  min-height:56px;
-  box-shadow:0 2px 16px rgba(15,23,42,0.3);
-}
-.hdr-back{background:rgba(255,255,255,0.1);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:17px;display:none;align-items:center;justify-content:center;transition:background .2s}
-.hdr-back:active{background:rgba(255,255,255,0.25)}
+.hdr{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;padding:0 20px;padding-top:calc(env(safe-area-inset-top) + 12px);position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:10px;min-height:56px;box-shadow:0 2px 16px rgba(15,23,42,.3)}
+.hdr-back{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:17px;display:none;align-items:center;justify-content:center}
+.hdr-back:active{background:rgba(255,255,255,.25)}
 .hdr-back.show{display:flex}
 .hdr-info{flex:1;min-width:0}
-.hdr-title{font-size:16px;font-weight:700;letter-spacing:0.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hdr-sub{font-size:11px;opacity:0.6;margin-top:1px;font-weight:400}
-.hdr-actions{display:flex;gap:6px}
-.hdr-btn{
-  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);
-  color:#fff;padding:7px 14px;border-radius:20px;cursor:pointer;
-  font-size:12px;font-weight:700;transition:all .2s;white-space:nowrap;
-}
-.hdr-btn:active{background:rgba(255,255,255,0.25);transform:scale(0.96)}
-.hdr-btn.accent{background:var(--c-accent);border-color:var(--c-accent)}
-
-/* ===== BOTTOM NAV ===== */
-.nav{
-  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
-  width:100%;max-width:480px;
-  background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-top:1px solid var(--c-border);
-  display:flex;z-index:100;
-  padding-bottom:env(safe-area-inset-bottom);
-}
-.nav-btn{
-  flex:1;border:none;background:none;padding:8px 0 6px;cursor:pointer;
-  color:var(--c-text3);display:flex;flex-direction:column;align-items:center;gap:2px;
-  font-size:10px;font-weight:500;font-family:var(--font);transition:color .2s;
-  position:relative;
-}
+.hdr-title{font-size:16px;font-weight:700;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-sub{font-size:11px;opacity:.6;margin-top:1px}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--c-border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+.nav-btn{flex:1;border:none;background:none;padding:8px 0 6px;cursor:pointer;color:var(--c-text3);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;font-weight:500;font-family:var(--font);position:relative}
 .nav-btn.on{color:var(--c-primary)}
 .nav-btn.on::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:24px;height:2.5px;border-radius:2px;background:var(--c-primary)}
 .nav-icon{font-size:22px;line-height:1}
-
-/* ===== SCREENS ===== */
-.screen{display:none;animation:fadeUp .3s ease}
-.screen.on{display:block}
+.screen{display:none;animation:fadeUp .3s ease}.screen.on{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* ===== CARDS ===== */
-.card{
-  background:var(--c-surface);border-radius:var(--r);padding:18px;
-  box-shadow:var(--shadow);border:1px solid var(--c-border);
-  margin:0 16px 12px;transition:transform .15s;
-}
-.card:active{transform:scale(0.985)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.card{background:var(--c-surface);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border:1px solid var(--c-border);margin:0 16px 12px}
+.card:active{transform:scale(.985)}
 .card-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .card-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .card-title{font-size:14px;font-weight:700;line-height:1.3}
 .card-desc{font-size:11.5px;color:var(--c-text2);margin-top:2px;line-height:1.5}
-
-/* ===== SECTION ===== */
 .section{padding:16px 16px 0}
 .section-title{font-size:12px;font-weight:700;color:var(--c-text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;padding-left:2px}
-
-/* ===== BADGES / PILLS ===== */
 .badge{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
 .badge-primary{background:var(--c-primary-lt);color:var(--c-primary)}
 .badge-accent{background:var(--c-accent-lt);color:var(--c-accent)}
@@ -125,202 +49,69 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 .badge-success{background:var(--c-success-lt);color:var(--c-success)}
 .badge-purple{background:var(--c-purple-lt);color:var(--c-purple)}
 .badge-gray{background:var(--c-surface3);color:var(--c-text2)}
-
-/* ===== STAT ROW ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 16px 16px}
 .stat{background:var(--c-surface);border-radius:var(--r-sm);padding:12px 8px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--c-border)}
 .stat-num{font-size:22px;font-weight:900;font-family:var(--mono);line-height:1}
 .stat-label{font-size:10px;color:var(--c-text3);margin-top:4px;font-weight:500}
-
-/* ===== FORM ===== */
 .form-group{margin:0 16px 14px}
 .form-label{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--c-text2);margin-bottom:6px}
 .form-label .hint{font-weight:400;color:var(--c-text3);font-size:11px}
-.form-input{
-  width:100%;padding:12px 14px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);
-  font-size:15px;background:var(--c-surface);color:var(--c-text);transition:border-color .2s;
-}
+.form-input{width:100%;padding:12px 14px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-size:15px;background:var(--c-surface);color:var(--c-text);transition:border-color .2s}
 .form-input:focus{outline:none;border-color:var(--c-primary);box-shadow:0 0 0 3px var(--c-primary-lt)}
 textarea.form-input{min-height:120px;resize:vertical;line-height:1.7}
 select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-
-/* ===== BUTTONS ===== */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  padding:12px 20px;border-radius:var(--r-sm);border:none;cursor:pointer;
-  font-size:14px;font-weight:700;font-family:var(--font);transition:all .15s;
-  min-height:44px;
-}
-.btn:active{transform:scale(0.97)}
-.btn-primary{background:var(--c-primary);color:#fff;box-shadow:0 2px 8px rgba(45,91,227,0.3)}
-.btn-accent{background:var(--c-accent);color:#fff;box-shadow:0 2px 8px rgba(13,148,136,0.3)}
-.btn-warn{background:var(--c-warn);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 20px;border-radius:var(--r-sm);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--font);transition:all .15s;min-height:44px}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.5;pointer-events:none}
+.btn-primary{background:var(--c-primary);color:#fff;box-shadow:0 2px 8px rgba(45,91,227,.3)}
+.btn-accent{background:var(--c-accent);color:#fff;box-shadow:0 2px 8px rgba(13,148,136,.3)}
 .btn-danger{background:var(--c-danger);color:#fff}
 .btn-ghost{background:transparent;color:var(--c-primary);border:1.5px solid var(--c-border)}
 .btn-full{width:calc(100% - 32px);margin:0 16px}
-.btn-group{display:flex;gap:8px;margin:0 16px}
-.btn-group .btn{flex:1}
-
-/* ===== ACTION ITEM ===== */
-.action-item{
-  background:var(--c-surface);border-radius:var(--r);padding:14px 16px;
-  margin:0 16px 10px;box-shadow:var(--shadow);border:1px solid var(--c-border);
-  cursor:pointer;transition:transform .15s;position:relative;overflow:hidden;
-}
-.action-item:active{transform:scale(0.985)}
+.btn-group{display:flex;gap:8px;margin:0 16px}.btn-group .btn{flex:1}
+.action-item{background:var(--c-surface);border-radius:var(--r);padding:14px 16px;margin:0 16px 10px;box-shadow:var(--shadow);border:1px solid var(--c-border);cursor:pointer;position:relative;overflow:hidden}
+.action-item:active{transform:scale(.985)}
 .action-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
 .action-item.pri-high::before{background:var(--c-danger)}
 .action-item.pri-mid::before{background:var(--c-warn)}
 .action-item.pri-low::before{background:var(--c-accent)}
 .action-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .action-title{font-size:14px;font-weight:700;line-height:1.4;flex:1}
-.action-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.action-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .action-meta-item{display:flex;align-items:center;gap:3px;font-size:11px;color:var(--c-text2)}
-
-/* ===== FILTER TABS ===== */
 .filters{display:flex;gap:6px;padding:12px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .filters::-webkit-scrollbar{display:none}
-.filter-btn{
-  padding:6px 14px;border-radius:20px;border:1.5px solid var(--c-border);
-  background:var(--c-surface);color:var(--c-text2);font-size:12px;font-weight:600;
-  cursor:pointer;white-space:nowrap;transition:all .2s;font-family:var(--font);
-}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--c-border);background:var(--c-surface);color:var(--c-text2);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:var(--font)}
 .filter-btn.on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}
-
-/* ===== RECORDING ===== */
-.rec-area{
-  margin:0 16px 16px;padding:24px;border-radius:var(--r);
-  background:linear-gradient(135deg,#0f172a,#1e3a5f);
-  color:#fff;text-align:center;
-}
-.rec-btn{
-  width:72px;height:72px;border-radius:50%;border:3px solid rgba(255,255,255,0.3);
-  background:rgba(255,255,255,0.1);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 14px;transition:all .3s;font-size:28px;
-}
-.rec-btn.recording{background:#e74c3c;border-color:#e74c3c;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(231,76,60,0.4)}50%{box-shadow:0 0 0 16px rgba(231,76,60,0)}}
-.rec-status{font-size:13px;opacity:0.8;margin-bottom:4px}
-.rec-time{font-family:var(--mono);font-size:20px;font-weight:700}
-.rec-hint{font-size:11px;opacity:0.5;margin-top:8px}
-
-/* ===== REPORT ===== */
-.report-box{
-  background:var(--c-surface2);border:1.5px solid var(--c-border);border-radius:var(--r);
-  padding:16px;margin:0 16px 12px;
-}
+.report-box{background:var(--c-surface2);border:1.5px solid var(--c-border);border-radius:var(--r);padding:16px;margin:0 16px 12px}
 .report-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.report-title{font-size:13px;font-weight:700}
-.report-date{font-size:11px;color:var(--c-text3)}
+.report-title{font-size:13px;font-weight:700}.report-date{font-size:11px;color:var(--c-text3)}
 .report-text{font-size:13px;line-height:1.7;color:var(--c-text2)}
-
-/* ===== MODAL ===== */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;
-  display:none;align-items:flex-end;justify-content:center;
-  animation:fadeIn .2s;
-}
-.modal-overlay.show{display:flex}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{
-  background:var(--c-surface);border-radius:20px 20px 0 0;width:100%;max-width:480px;
-  max-height:85vh;overflow-y:auto;padding:20px 0 calc(20px + env(safe-area-inset-bottom));
-  animation:slideUp .3s ease;
-}
-@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-handle{width:36px;height:4px;border-radius:2px;background:var(--c-border2);margin:0 auto 16px}
-.modal-title{font-size:17px;font-weight:900;text-align:center;margin-bottom:16px}
-
-/* ===== EMPTY STATE ===== */
-.empty{text-align:center;padding:48px 24px;color:var(--c-text3)}
-.empty-icon{font-size:48px;margin-bottom:12px;opacity:0.5}
-.empty-text{font-size:14px;line-height:1.6}
-
-/* ===== TOOLTIP ===== */
-.tooltip{position:relative}
-.tooltip::after{
-  content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
-  background:#1e293b;color:#fff;font-size:11px;padding:5px 10px;border-radius:6px;
-  white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;
-}
-.tooltip:active::after{opacity:1}
-
-/* ===== CONF LIST ===== */
-.conf-item{
-  background:var(--c-surface);border-radius:var(--r);padding:14px 16px;
-  margin:0 16px 10px;box-shadow:var(--shadow);border:1px solid var(--c-border);cursor:pointer;
-}
+.conf-item{background:var(--c-surface);border-radius:var(--r);padding:14px 16px;margin:0 16px 10px;box-shadow:var(--shadow);border:1px solid var(--c-border);cursor:pointer}
 .conf-item-date{font-family:var(--mono);font-size:12px;color:var(--c-primary);font-weight:500}
 .conf-item-title{font-size:14px;font-weight:700;margin-top:4px}
 .conf-item-meta{display:flex;gap:8px;margin-top:8px}
-
-/* ===== GUIDE OVERLAY ===== */
-.guide-tip{
-  background:var(--c-primary);color:#fff;font-size:12px;padding:8px 14px;
-  border-radius:var(--r-sm);margin:0 16px 12px;line-height:1.6;
-  display:flex;align-items:flex-start;gap:8px;
-}
+.guide-tip{background:var(--c-primary);color:#fff;font-size:12px;padding:8px 14px;border-radius:var(--r-sm);margin:0 16px 12px;line-height:1.6;display:flex;align-items:flex-start;gap:8px}
 .guide-tip .icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.guide-tip .close{margin-left:auto;opacity:0.6;cursor:pointer;font-size:16px;flex-shrink:0}
-
-/* ===== SPACER ===== */
-.spacer{height:16px}
-.spacer-sm{height:8px}
+.guide-tip .close{margin-left:auto;opacity:.6;cursor:pointer;font-size:16px;flex-shrink:0}
+.empty{text-align:center;padding:48px 24px;color:var(--c-text3)}
+.empty-icon{font-size:48px;margin-bottom:12px;opacity:.5}
+.empty-text{font-size:14px;line-height:1.6}
+.spacer{height:16px}.spacer-sm{height:8px}
 </style>
 </head>
 <body>
 <div class="app" id="app">
-
-<!-- ===== HEADER ===== -->
-<div class="hdr" id="hdr">
-  <button class="hdr-back" id="hdr-back" onclick="goBack()">←</button>
-  <div class="hdr-info">
-    <div class="hdr-title" id="hdr-title">カンファレンス管理</div>
-    <div class="hdr-sub" id="hdr-sub"></div>
-  </div>
-  <div class="hdr-actions" id="hdr-actions"></div>
-</div>
-
-<!-- ===== SCREENS ===== -->
+<div class="hdr"><button class="hdr-back" id="hdr-back" onclick="goBack()">←</button><div class="hdr-info"><div class="hdr-title" id="hdr-title">カンファレンス管理</div><div class="hdr-sub" id="hdr-sub"></div></div></div>
 
 <!-- HOME -->
 <div class="screen on" id="s-home">
   <div class="spacer"></div>
-  <div id="home-guide" class="guide-tip">
-    <span class="icon">💡</span>
-    <span>毎週火曜のカンファレンスで決まったアクションを管理するアプリです。「新規カンファ」から始めましょう。</span>
-    <span class="close" onclick="this.parentElement.style.display='none'">✕</span>
-  </div>
+  <div id="home-guide" class="guide-tip"><span class="icon">💡</span><span>毎週火曜のカンファレンスで決まったアクションを管理するアプリです。「新規カンファ」から始めましょう。</span><span class="close" onclick="this.parentElement.style.display='none'">✕</span></div>
   <div class="stats" id="home-stats"></div>
   <div class="section"><div class="section-title">クイックアクション</div></div>
-  <div class="card" onclick="navTo('s-new-conf')" style="cursor:pointer">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--c-primary-lt);color:var(--c-primary)">🎙</div>
-      <div>
-        <div class="card-title">新規カンファレンス</div>
-        <div class="card-desc">音声を録音→AIが文字起こし→議事録を編集→Next Actionを作成</div>
-      </div>
-    </div>
-  </div>
-  <div class="card" onclick="navTo('s-actions')" style="cursor:pointer">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--c-accent-lt);color:var(--c-accent)">📋</div>
-      <div>
-        <div class="card-title">アクション一覧</div>
-        <div class="card-desc">未着手・進行中のアクションをステータス別に確認・報告</div>
-      </div>
-    </div>
-  </div>
-  <div class="card" onclick="navTo('s-history')" style="cursor:pointer">
-    <div class="card-header">
-      <div class="card-icon" style="background:var(--c-purple-lt);color:var(--c-purple)">📁</div>
-      <div>
-        <div class="card-title">カンファレンス履歴</div>
-        <div class="card-desc">過去のカンファレンスの議事録とアクションを閲覧</div>
-      </div>
-    </div>
-  </div>
+  <div class="card" onclick="navTo('s-new-conf')" style="cursor:pointer"><div class="card-header"><div class="card-icon" style="background:var(--c-primary-lt);color:var(--c-primary)">📝</div><div><div class="card-title">新規カンファレンス</div><div class="card-desc">議事録を貼り付け→AIがNext Actionを自動抽出→担当・期限を設定</div></div></div></div>
+  <div class="card" onclick="navTo('s-actions')" style="cursor:pointer"><div class="card-header"><div class="card-icon" style="background:var(--c-accent-lt);color:var(--c-accent)">📋</div><div><div class="card-title">アクション一覧</div><div class="card-desc">未着手・進行中のアクションをステータス別に確認・報告</div></div></div></div>
+  <div class="card" onclick="navTo('s-history')" style="cursor:pointer"><div class="card-header"><div class="card-icon" style="background:var(--c-purple-lt);color:var(--c-purple)">📁</div><div><div class="card-title">カンファレンス履歴</div><div class="card-desc">過去のカンファレンスの議事録とアクションを閲覧</div></div></div></div>
   <div class="spacer"></div>
   <div class="section"><div class="section-title">期限が近いアクション</div></div>
   <div id="home-urgent"></div>
@@ -330,745 +121,243 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 <!-- NEW CONFERENCE -->
 <div class="screen" id="s-new-conf">
   <div class="spacer"></div>
-  <div class="guide-tip">
-    <span class="icon">🎙</span>
-    <span><b>STEP 1：</b> マイクボタンを押して会議を録音します。停止後にAIが文字起こしします。手動入力も可能です。</span>
-  </div>
-  <div class="form-group">
-    <label class="form-label">📅 開催日</label>
-    <input type="date" class="form-input" id="conf-date">
-  </div>
-  <div class="form-group">
-    <label class="form-label">📝 カンファレンス名 <span class="hint">※ 例：第12回 定期カンファレンス</span></label>
-    <input type="text" class="form-input" id="conf-title" placeholder="カンファレンス名を入力">
-  </div>
-  <div class="rec-area">
-    <div class="rec-status" id="rec-status">タップして録音開始</div>
-    <button class="rec-btn" id="rec-btn" onclick="toggleRecording()">🎙</button>
-    <div class="rec-time" id="rec-time">00:00</div>
-    <div class="rec-hint">iPhoneのマイクを使って会議音声を録音します</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">📄 議事録 <span class="hint">AI文字起こし結果が入ります / 手動編集可</span></label>
-    <textarea class="form-input" id="conf-minutes" placeholder="ここに議事録が表示されます。手動で入力・編集もできます。" style="min-height:180px"></textarea>
-  </div>
+  <div class="guide-tip"><span class="icon">📝</span><span><b>STEP 1：</b> 録音アプリの議事録をここに貼り付けてください。AIがNext Actionを自動抽出します。</span></div>
+  <div class="form-group"><label class="form-label">📅 開催日</label><input type="date" class="form-input" id="conf-date"></div>
+  <div class="form-group"><label class="form-label">📝 カンファレンス名 <span class="hint">例：第12回 定期カンファレンス</span></label><input type="text" class="form-input" id="conf-title" placeholder="カンファレンス名を入力"></div>
+  <div class="form-group"><label class="form-label">📄 議事録 <span class="hint">録音アプリからコピペ</span></label><textarea class="form-input" id="conf-minutes" placeholder="録音アプリからコピーした議事録をここに貼り付けてください。&#10;&#10;AIが内容を分析し、Next Action・担当者・期限を自動で抽出します。" style="min-height:250px"></textarea></div>
   <div class="spacer-sm"></div>
-  <button class="btn btn-primary btn-full" onclick="goToExtractActions()">
-    ✨ Next Actionを抽出する →
-  </button>
+  <button class="btn btn-primary btn-full" onclick="goToExtractActions()">🤖 AIでNext Actionを抽出する →</button>
   <div class="spacer"></div>
 </div>
 
 <!-- EXTRACT ACTIONS -->
 <div class="screen" id="s-extract">
   <div class="spacer"></div>
-  <div class="guide-tip">
-    <span class="icon">✨</span>
-    <span><b>STEP 2：</b> 議事録からNext Actionを作成します。各アクションの担当者・期限・重要度を設定してください。</span>
-  </div>
+  <div class="guide-tip" id="extract-guide"><span class="icon">✨</span><span><b>STEP 2：</b> AIが抽出したNext Actionを確認・修正してください。</span></div>
+  <div id="ai-loading" style="display:none;text-align:center;padding:32px 16px"><div style="font-size:36px;margin-bottom:12px;animation:pulse 1.5s infinite">🤖</div><div style="font-size:14px;font-weight:700;color:var(--c-primary)">AIが議事録を分析中...</div><div style="font-size:12px;color:var(--c-text2);margin-top:6px">Next Action・担当者・期限を抽出しています</div></div>
   <div id="extract-list"></div>
   <div class="spacer-sm"></div>
-  <button class="btn btn-ghost btn-full" onclick="addNewActionForm()">＋ アクションを追加</button>
+  <button class="btn btn-ghost btn-full" onclick="addNewActionForm()">＋ アクションを手動追加</button>
   <div class="spacer-sm"></div>
   <button class="btn btn-accent btn-full" onclick="saveConference()">💾 カンファレンスを保存</button>
   <div class="spacer"></div>
 </div>
 
 <!-- ACTION LIST -->
-<div class="screen" id="s-actions">
-  <div class="filters" id="action-filters"></div>
-  <div id="action-list"></div>
-  <div class="spacer"></div>
-</div>
-
+<div class="screen" id="s-actions"><div class="filters" id="action-filters"></div><div id="action-list"></div><div class="spacer"></div></div>
 <!-- ACTION DETAIL -->
-<div class="screen" id="s-action-detail">
-  <div class="spacer"></div>
-  <div id="detail-content"></div>
-  <div class="spacer"></div>
-</div>
-
-<!-- CONFERENCE HISTORY -->
-<div class="screen" id="s-history">
-  <div class="spacer"></div>
-  <div id="history-list"></div>
-  <div class="spacer"></div>
-</div>
-
-<!-- CONFERENCE DETAIL (VIEW) -->
-<div class="screen" id="s-conf-detail">
-  <div class="spacer"></div>
-  <div id="conf-detail-content"></div>
-  <div class="spacer"></div>
-</div>
+<div class="screen" id="s-action-detail"><div class="spacer"></div><div id="detail-content"></div><div class="spacer"></div></div>
+<!-- HISTORY -->
+<div class="screen" id="s-history"><div class="spacer"></div><div id="history-list"></div><div class="spacer"></div></div>
+<!-- CONF DETAIL -->
+<div class="screen" id="s-conf-detail"><div class="spacer"></div><div id="conf-detail-content"></div><div class="spacer"></div></div>
 
 <!-- SETTINGS -->
 <div class="screen" id="s-settings">
   <div class="spacer"></div>
-  <div class="guide-tip">
-    <span class="icon">⚙️</span>
-    <span>スタッフ名を設定すると、アクション作成時のドロップダウンに反映されます。</span>
-  </div>
-  <div class="form-group">
-    <label class="form-label">👥 スタッフ名 <span class="hint">改行で複数入力</span></label>
-    <textarea class="form-input" id="set-staff" placeholder="例：&#10;長谷川&#10;田中&#10;佐藤" style="min-height:140px"></textarea>
-  </div>
-  <div class="form-group">
-    <label class="form-label">👔 上司名（承認者） <span class="hint">改行で複数入力</span></label>
-    <textarea class="form-input" id="set-managers" placeholder="例：&#10;長谷川知世&#10;椛島和子" style="min-height:100px"></textarea>
-  </div>
+  <div class="guide-tip"><span class="icon">⚙️</span><span>APIキーとスタッフ名を設定してください。データは端末内にのみ保存されます。</span></div>
+  <div class="section"><div class="section-title">AI設定</div></div>
+  <div class="form-group"><label class="form-label">🤖 Anthropic APIキー <span class="hint">Next Action自動抽出に使用</span></label><input type="password" class="form-input" id="set-anthropic-key" placeholder="sk-ant-api03-..."></div>
+  <div class="section"><div class="section-title">スタッフ設定</div></div>
+  <div class="form-group"><label class="form-label">👥 スタッフ名 <span class="hint">改行で複数入力</span></label><textarea class="form-input" id="set-staff" placeholder="例：&#10;長谷川&#10;田中&#10;佐藤" style="min-height:140px"></textarea></div>
+  <div class="form-group"><label class="form-label">👔 承認者名 <span class="hint">改行で複数入力</span></label><textarea class="form-input" id="set-managers" placeholder="例：&#10;長谷川知世&#10;椛島和子" style="min-height:100px"></textarea></div>
   <div class="spacer-sm"></div>
   <button class="btn btn-primary btn-full" onclick="saveSettings()">💾 設定を保存</button>
   <div class="spacer"></div>
   <div class="section"><div class="section-title">データ管理</div></div>
-  <div class="btn-group">
-    <button class="btn btn-ghost" onclick="exportData()">📤 エクスポート</button>
-    <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 インポート</button>
-  </div>
+  <div class="btn-group"><button class="btn btn-ghost" onclick="exportData()">📤 エクスポート</button><button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 インポート</button></div>
   <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
   <div class="spacer-sm"></div>
-  <button class="btn btn-danger btn-full" onclick="if(confirm('すべてのデータを削除しますか？')){{localStorage.clear();location.reload()}}">🗑 全データ削除</button>
+  <button class="btn btn-danger btn-full" onclick="if(confirm('すべてのデータを削除しますか？')){localStorage.clear();location.reload()}">🗑 全データ削除</button>
   <div class="spacer"></div>
 </div>
-
-</div><!-- /app -->
-
-<!-- BOTTOM NAV -->
-<div class="nav">
-  <button class="nav-btn on" data-nav="s-home" onclick="navTo('s-home')">
-    <span class="nav-icon">🏠</span>ホーム
-  </button>
-  <button class="nav-btn" data-nav="s-new-conf" onclick="navTo('s-new-conf')">
-    <span class="nav-icon">🎙</span>カンファ
-  </button>
-  <button class="nav-btn" data-nav="s-actions" onclick="navTo('s-actions')">
-    <span class="nav-icon">📋</span>アクション
-  </button>
-  <button class="nav-btn" data-nav="s-history" onclick="navTo('s-history')">
-    <span class="nav-icon">📁</span>履歴
-  </button>
-  <button class="nav-btn" data-nav="s-settings" onclick="navTo('s-settings')">
-    <span class="nav-icon">⚙️</span>設定
-  </button>
 </div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <div id="modal-content"></div>
-  </div>
+<div class="nav">
+  <button class="nav-btn on" data-nav="s-home" onclick="navTo('s-home')"><span class="nav-icon">🏠</span>ホーム</button>
+  <button class="nav-btn" data-nav="s-new-conf" onclick="navTo('s-new-conf')"><span class="nav-icon">📝</span>カンファ</button>
+  <button class="nav-btn" data-nav="s-actions" onclick="navTo('s-actions')"><span class="nav-icon">📋</span>アクション</button>
+  <button class="nav-btn" data-nav="s-history" onclick="navTo('s-history')"><span class="nav-icon">📁</span>履歴</button>
+  <button class="nav-btn" data-nav="s-settings" onclick="navTo('s-settings')"><span class="nav-icon">⚙️</span>設定</button>
 </div>
 
 <script>
-// ===== DATA LAYER =====
-const DB = {
-  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d } catch { return d } },
-  set(k, v) { localStorage.setItem(k, JSON.stringify(v)) },
-};
+const DB={get(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch{return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+function getSettings(){return DB.get('settings',{staff:[],managers:[],anthropicKey:''})}
+function getConferences(){return DB.get('conferences',[])}
+function getActions(){return DB.get('actions',[])}
+function saveConferences(c){DB.set('conferences',c)}
+function saveActions(a){DB.set('actions',a)}
 
-function getSettings() {
-  return DB.get('settings', { staff: [], managers: [] });
+let navStack=['s-home'],currentScreen='s-home';
+function navTo(id,push=true){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  const el=document.getElementById(id);if(el)el.classList.add('on');
+  if(push&&id!==currentScreen)navStack.push(id);currentScreen=id;
+  updateHeader(id);updateNav(id);
+  if(id==='s-home')renderHome();if(id==='s-actions')renderActions();
+  if(id==='s-history')renderHistory();if(id==='s-new-conf')initNewConf();
+  if(id==='s-settings')loadSettings();
 }
-function getConferences() { return DB.get('conferences', []); }
-function getActions() { return DB.get('actions', []); }
-function saveConferences(c) { DB.set('conferences', c); }
-function saveActions(a) { DB.set('actions', a); }
+function goBack(){if(navStack.length>1){navStack.pop();navTo(navStack[navStack.length-1],false)}}
+const headers={'s-home':{title:'カンファレンス管理',sub:'',back:false},'s-new-conf':{title:'新規カンファレンス',sub:'STEP 1: 議事録を貼り付け',back:true},'s-extract':{title:'Next Action 確認',sub:'STEP 2: 確認・修正して保存',back:true},'s-actions':{title:'アクション一覧',sub:'ステータス別に管理',back:false},'s-action-detail':{title:'アクション詳細',sub:'',back:true},'s-history':{title:'カンファレンス履歴',sub:'過去の記録',back:false},'s-conf-detail':{title:'カンファレンス詳細',sub:'',back:true},'s-settings':{title:'設定',sub:'APIキー・スタッフ管理',back:false}};
+function updateHeader(id){const h=headers[id]||headers['s-home'];document.getElementById('hdr-title').textContent=h.title;document.getElementById('hdr-sub').textContent=h.sub;document.getElementById('hdr-back').classList.toggle('show',h.back)}
+function updateNav(id){const m={'s-home':'s-home','s-new-conf':'s-new-conf','s-extract':'s-new-conf','s-actions':'s-actions','s-action-detail':'s-actions','s-history':'s-history','s-conf-detail':'s-history','s-settings':'s-settings'};const a=m[id]||'s-home';document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.nav===a))}
 
-// ===== NAV =====
-let navStack = ['s-home'];
-let currentScreen = 's-home';
-
-function navTo(id, pushStack = true) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
-  const el = document.getElementById(id);
-  if (el) el.classList.add('on');
-  if (pushStack && id !== currentScreen) navStack.push(id);
-  currentScreen = id;
-  updateHeader(id);
-  updateNav(id);
-  if (id === 's-home') renderHome();
-  if (id === 's-actions') renderActions();
-  if (id === 's-history') renderHistory();
-  if (id === 's-new-conf') initNewConf();
-  if (id === 's-settings') loadSettings();
+function renderHome(){
+  const actions=getActions(),total=actions.length,todo=actions.filter(a=>a.status==='未着手').length,doing=actions.filter(a=>a.status==='進行中'||a.status==='着手').length,done=actions.filter(a=>a.status==='完了'||a.status==='承認済').length;
+  document.getElementById('home-stats').innerHTML=`<div class="stat"><div class="stat-num">${total}</div><div class="stat-label">全体</div></div><div class="stat"><div class="stat-num" style="color:var(--c-danger)">${todo}</div><div class="stat-label">未着手</div></div><div class="stat"><div class="stat-num" style="color:var(--c-warn)">${doing}</div><div class="stat-label">進行中</div></div><div class="stat"><div class="stat-num" style="color:var(--c-success)">${done}</div><div class="stat-label">完了</div></div>`;
+  const urgent=actions.filter(a=>a.status!=='完了'&&a.status!=='承認済'&&a.deadline).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);
+  document.getElementById('home-urgent').innerHTML=urgent.length===0?'<div class="empty"><div class="empty-icon">✅</div><div class="empty-text">期限が近いアクションはありません</div></div>':urgent.map(a=>renderActionItem(a)).join('');
 }
 
-function goBack() {
-  if (navStack.length > 1) { navStack.pop(); navTo(navStack[navStack.length - 1], false); }
+function initNewConf(){const d=document.getElementById('conf-date');if(!d.value)d.value=new Date().toISOString().split('T')[0]}
+
+// ===== AI EXTRACTION =====
+async function aiExtractActions(minutes){
+  const s=getSettings(),staffList=s.staff.length>0?s.staff.join('、'):'（未登録）',today=new Date().toISOString().split('T')[0];
+  const prompt=`あなたは介護施設の定期カンファレンス議事録を分析するアシスタントです。以下の議事録から、具体的なNext Action（やるべきこと）をすべて抽出してください。
+
+【登録スタッフ一覧】${staffList}
+【今日の日付】${today}
+
+【議事録】
+${minutes}
+
+以下のJSON形式のみで回答してください。JSON以外の文章は一切含めないでください。
+{"actions":[{"title":"アクション内容（具体的に）","assignee":"担当者名（スタッフ一覧から最も適切な人を選択。不明なら空文字）","deadline":"YYYY-MM-DD（議事録に記載があればそれを使用。なければ${today}から1週間後）","priority":"高 or 中 or 低","note":"補足（あれば。なければ空文字）"}]}`;
+  const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':s.anthropicKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})});
+  if(!res.ok)throw new Error(await res.text());
+  const data=await res.json(),text=data.content.map(c=>c.text||'').join(''),jsonMatch=text.match(/\{[\s\S]*\}/);
+  if(!jsonMatch)throw new Error('AIの応答を解析できませんでした');
+  return JSON.parse(jsonMatch[0]).actions||[];
 }
 
-const headers = {
-  's-home': { title: 'カンファレンス管理', sub: '', back: false },
-  's-new-conf': { title: '新規カンファレンス', sub: 'STEP 1: 録音 → 議事録', back: true },
-  's-extract': { title: 'Next Action 作成', sub: 'STEP 2: アクション設定', back: true },
-  's-actions': { title: 'アクション一覧', sub: 'ステータス別に管理', back: false },
-  's-action-detail': { title: 'アクション詳細', sub: '', back: true },
-  's-history': { title: 'カンファレンス履歴', sub: '過去の記録', back: false },
-  's-conf-detail': { title: 'カンファレンス詳細', sub: '', back: true },
-  's-settings': { title: '設定', sub: 'スタッフ・施設の管理', back: false },
-};
-
-function updateHeader(id) {
-  const h = headers[id] || headers['s-home'];
-  document.getElementById('hdr-title').textContent = h.title;
-  document.getElementById('hdr-sub').textContent = h.sub;
-  const bb = document.getElementById('hdr-back');
-  bb.classList.toggle('show', h.back);
-  document.getElementById('hdr-actions').innerHTML = '';
-}
-
-function updateNav(id) {
-  const map = { 's-home': 's-home', 's-new-conf': 's-new-conf', 's-extract': 's-new-conf',
-    's-actions': 's-actions', 's-action-detail': 's-actions', 's-history': 's-history',
-    's-conf-detail': 's-history', 's-settings': 's-settings' };
-  const active = map[id] || 's-home';
-  document.querySelectorAll('.nav-btn').forEach(b => {
-    b.classList.toggle('on', b.dataset.nav === active);
-  });
-}
-
-// ===== HOME =====
-function renderHome() {
-  const actions = getActions();
-  const total = actions.length;
-  const todo = actions.filter(a => a.status === '未着手').length;
-  const doing = actions.filter(a => a.status === '進行中' || a.status === '着手').length;
-  const done = actions.filter(a => a.status === '完了' || a.status === '承認済').length;
-  document.getElementById('home-stats').innerHTML = `
-    <div class="stat"><div class="stat-num">${total}</div><div class="stat-label">全体</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--c-danger)">${todo}</div><div class="stat-label">未着手</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--c-warn)">${doing}</div><div class="stat-label">進行中</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--c-success)">${done}</div><div class="stat-label">完了</div></div>
-  `;
-  // Urgent actions
-  const today = new Date().toISOString().split('T')[0];
-  const urgent = actions
-    .filter(a => a.status !== '完了' && a.status !== '承認済' && a.deadline)
-    .sort((a, b) => a.deadline.localeCompare(b.deadline))
-    .slice(0, 3);
-  const urg = document.getElementById('home-urgent');
-  if (urgent.length === 0) {
-    urg.innerHTML = '<div class="empty"><div class="empty-icon">✅</div><div class="empty-text">期限が近いアクションはありません</div></div>';
-  } else {
-    urg.innerHTML = urgent.map(a => renderActionItem(a)).join('');
-  }
-}
-
-// ===== RECORDING & TRANSCRIPTION =====
-let isRecording = false;
-let recognition = null;
-let recTimer = null;
-let recSeconds = 0;
-let transcript = '';
-
-function initNewConf() {
-  const d = document.getElementById('conf-date');
-  if (!d.value) d.value = new Date().toISOString().split('T')[0];
-  isRecording = false;
-  recSeconds = 0;
-  document.getElementById('rec-time').textContent = '00:00';
-  document.getElementById('rec-status').textContent = 'タップして録音開始';
-  document.getElementById('rec-btn').classList.remove('recording');
-}
-
-function toggleRecording() {
-  if (!isRecording) startRecording();
-  else stopRecording();
-}
-
-function startRecording() {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    alert('お使いのブラウザは音声認識に対応していません。\nSafariまたはChromeをお使いください。');
-    return;
-  }
-  recognition = new SpeechRecognition();
-  recognition.lang = 'ja-JP';
-  recognition.continuous = true;
-  recognition.interimResults = true;
-  transcript = document.getElementById('conf-minutes').value;
-  
-  recognition.onresult = (e) => {
-    let interim = '';
-    let final = '';
-    for (let i = e.resultIndex; i < e.results.length; i++) {
-      const t = e.results[i][0].transcript;
-      if (e.results[i].isFinal) final += t;
-      else interim += t;
+let tempActions=[];
+async function goToExtractActions(){
+  const minutes=document.getElementById('conf-minutes').value.trim();
+  if(!minutes){alert('議事録を貼り付けてください');return}
+  const s=getSettings();tempActions=[];document.getElementById('extract-list').innerHTML='';navTo('s-extract');
+  if(s.anthropicKey){
+    document.getElementById('ai-loading').style.display='block';document.getElementById('extract-guide').style.display='none';
+    try{
+      const actions=await aiExtractActions(minutes);
+      document.getElementById('ai-loading').style.display='none';document.getElementById('extract-guide').style.display='flex';
+      if(actions.length>0)actions.forEach(a=>addActionFormWithData(a));else addNewActionForm();
+    }catch(err){
+      document.getElementById('ai-loading').style.display='none';document.getElementById('extract-guide').style.display='flex';
+      alert('AI分析に失敗しました:\n'+err.message+'\n\n手動でアクションを追加してください。');addNewActionForm();
     }
-    if (final) transcript += final + '\n';
-    document.getElementById('conf-minutes').value = transcript + (interim ? '...' + interim : '');
-  };
-  
-  recognition.onerror = (e) => {
-    if (e.error === 'no-speech') return;
-    console.error('Speech error:', e.error);
-  };
-  
-  recognition.onend = () => {
-    if (isRecording) recognition.start(); // auto-restart
-  };
-  
-  recognition.start();
-  isRecording = true;
-  document.getElementById('rec-btn').classList.add('recording');
-  document.getElementById('rec-status').textContent = '🔴 録音中...';
-  recSeconds = 0;
-  recTimer = setInterval(() => {
-    recSeconds++;
-    const m = String(Math.floor(recSeconds / 60)).padStart(2, '0');
-    const s = String(recSeconds % 60).padStart(2, '0');
-    document.getElementById('rec-time').textContent = m + ':' + s;
-  }, 1000);
+  }else{alert('Anthropic APIキーが未設定です。\n設定画面からAPIキーを入力するとAIが自動抽出します。');addNewActionForm()}
 }
 
-function stopRecording() {
-  if (recognition) { recognition.stop(); recognition = null; }
-  isRecording = false;
-  clearInterval(recTimer);
-  document.getElementById('rec-btn').classList.remove('recording');
-  document.getElementById('rec-status').textContent = '録音完了 ✅';
-  document.getElementById('conf-minutes').value = transcript;
+function addActionFormWithData(data){
+  const s=getSettings(),staffOpts=s.staff.map(x=>`<option value="${x}" ${x===data.assignee?'selected':''}>${x}</option>`).join(''),idx=tempActions.length,pri=data.priority||'中';
+  tempActions.push({title:data.title,assignee:data.assignee,deadline:data.deadline,priority:pri,note:data.note});
+  document.getElementById('extract-list').insertAdjacentHTML('beforeend',`
+  <div class="card" id="ext-action-${idx}" style="border-left:4px solid ${pri==='高'?'var(--c-danger)':pri==='低'?'var(--c-accent)':'var(--c-warn)'}">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="badge ${pri==='高'?'badge-danger':pri==='低'?'badge-accent':'badge-warn'}">🤖 AI抽出 #${idx+1}</span><button onclick="removeActionForm(${idx})" style="background:none;border:none;color:var(--c-danger);cursor:pointer;font-size:18px">✕</button></div>
+    <div style="margin-bottom:10px"><label class="form-label">📌 アクション内容</label><input type="text" class="form-input" id="ext-title-${idx}" value="${(data.title||'').replace(/"/g,'&quot;')}"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div><label class="form-label">👤 担当者</label><select class="form-input" id="ext-assignee-${idx}"><option value="">選択</option>${staffOpts}<option value="__other">その他</option></select></div><div><label class="form-label">📅 期限</label><input type="date" class="form-input" id="ext-deadline-${idx}" value="${data.deadline||''}"></div></div>
+    <div style="margin-bottom:10px"><label class="form-label">⚡ 重要度</label><div style="display:flex;gap:6px"><button class="filter-btn ${pri==='高'?'on':''}" onclick="setPriority(${idx},'高',this)" data-pri="高">🔴 高</button><button class="filter-btn ${pri==='中'?'on':''}" onclick="setPriority(${idx},'中',this)" data-pri="中">🟡 中</button><button class="filter-btn ${pri==='低'?'on':''}" onclick="setPriority(${idx},'低',this)" data-pri="低">🟢 低</button></div></div>
+    <div><label class="form-label">💬 メモ</label><input type="text" class="form-input" id="ext-note-${idx}" value="${(data.note||'').replace(/"/g,'&quot;')}"></div>
+  </div>`);
 }
 
-// ===== EXTRACT ACTIONS =====
-let tempActions = [];
-
-function goToExtractActions() {
-  const minutes = document.getElementById('conf-minutes').value.trim();
-  if (!minutes && !confirm('議事録が空です。アクション作成画面に進みますか？')) return;
-  tempActions = [];
-  addNewActionForm();
-  navTo('s-extract');
-}
-
-function addNewActionForm() {
-  const settings = getSettings();
-  const staffOpts = settings.staff.map(s => `<option value="${s}">${s}</option>`).join('');
-  const idx = tempActions.length;
-  tempActions.push({ title: '', assignee: '', deadline: '', priority: '中', note: '' });
-  
-  const deadlineDefault = new Date();
-  deadlineDefault.setDate(deadlineDefault.getDate() + 7);
-  const dlStr = deadlineDefault.toISOString().split('T')[0];
-  
-  const html = `
+function addNewActionForm(){
+  const s=getSettings(),staffOpts=s.staff.map(x=>`<option value="${x}">${x}</option>`).join(''),idx=tempActions.length;
+  tempActions.push({title:'',assignee:'',deadline:'',priority:'中',note:''});
+  const dl=new Date();dl.setDate(dl.getDate()+7);
+  document.getElementById('extract-list').insertAdjacentHTML('beforeend',`
   <div class="card" id="ext-action-${idx}" style="border-left:4px solid var(--c-primary)">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <span class="badge badge-primary">Action #${idx + 1}</span>
-      <button onclick="removeActionForm(${idx})" style="background:none;border:none;color:var(--c-danger);cursor:pointer;font-size:18px">✕</button>
-    </div>
-    <div style="margin-bottom:10px">
-      <label class="form-label">📌 アクション内容</label>
-      <input type="text" class="form-input" id="ext-title-${idx}" placeholder="何をするか具体的に記入">
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-      <div>
-        <label class="form-label">👤 担当者</label>
-        <select class="form-input" id="ext-assignee-${idx}">
-          <option value="">選択</option>${staffOpts}
-          <option value="__other">その他（入力）</option>
-        </select>
-      </div>
-      <div>
-        <label class="form-label">📅 期限</label>
-        <input type="date" class="form-input" id="ext-deadline-${idx}" value="${dlStr}">
-      </div>
-    </div>
-    <div style="margin-bottom:10px">
-      <label class="form-label">⚡ 重要度</label>
-      <div style="display:flex;gap:6px">
-        <button class="filter-btn on" onclick="setPriority(${idx},'高',this)" data-pri="高">🔴 高</button>
-        <button class="filter-btn" onclick="setPriority(${idx},'中',this)" data-pri="中">🟡 中</button>
-        <button class="filter-btn" onclick="setPriority(${idx},'低',this)" data-pri="低">🟢 低</button>
-      </div>
-    </div>
-    <div>
-      <label class="form-label">💬 メモ <span class="hint">任意</span></label>
-      <input type="text" class="form-input" id="ext-note-${idx}" placeholder="補足情報があれば">
-    </div>
-  </div>`;
-  
-  document.getElementById('extract-list').insertAdjacentHTML('beforeend', html);
-  // default priority to 中
-  setTimeout(() => {
-    const btns = document.querySelectorAll(`#ext-action-${idx} [data-pri]`);
-    btns.forEach(b => b.classList.toggle('on', b.dataset.pri === '中'));
-    tempActions[idx].priority = '中';
-  }, 0);
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="badge badge-primary">手動追加 #${idx+1}</span><button onclick="removeActionForm(${idx})" style="background:none;border:none;color:var(--c-danger);cursor:pointer;font-size:18px">✕</button></div>
+    <div style="margin-bottom:10px"><label class="form-label">📌 アクション内容</label><input type="text" class="form-input" id="ext-title-${idx}" placeholder="何をするか具体的に"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div><label class="form-label">👤 担当者</label><select class="form-input" id="ext-assignee-${idx}"><option value="">選択</option>${staffOpts}<option value="__other">その他</option></select></div><div><label class="form-label">📅 期限</label><input type="date" class="form-input" id="ext-deadline-${idx}" value="${dl.toISOString().split('T')[0]}"></div></div>
+    <div style="margin-bottom:10px"><label class="form-label">⚡ 重要度</label><div style="display:flex;gap:6px"><button class="filter-btn" onclick="setPriority(${idx},'高',this)" data-pri="高">🔴 高</button><button class="filter-btn on" onclick="setPriority(${idx},'中',this)" data-pri="中">🟡 中</button><button class="filter-btn" onclick="setPriority(${idx},'低',this)" data-pri="低">🟢 低</button></div></div>
+    <div><label class="form-label">💬 メモ</label><input type="text" class="form-input" id="ext-note-${idx}" placeholder="補足情報"></div>
+  </div>`);
 }
 
-function setPriority(idx, val, el) {
-  tempActions[idx].priority = val;
-  el.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
-  el.classList.add('on');
-}
+function setPriority(idx,val,el){tempActions[idx].priority=val;el.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));el.classList.add('on')}
+function removeActionForm(idx){const el=document.getElementById(`ext-action-${idx}`);if(el)el.remove();tempActions[idx]=null}
 
-function removeActionForm(idx) {
-  const el = document.getElementById(`ext-action-${idx}`);
-  if (el) el.remove();
-  tempActions[idx] = null;
-}
-
-function saveConference() {
-  const title = document.getElementById('conf-title').value.trim();
-  const date = document.getElementById('conf-date').value;
-  const minutes = document.getElementById('conf-minutes').value.trim();
-  
-  if (!title) { alert('カンファレンス名を入力してください'); return; }
-  
-  const confId = 'conf-' + Date.now();
-  const newActions = [];
-  
-  tempActions.forEach((_, idx) => {
-    if (!tempActions[idx]) return;
-    const t = document.getElementById(`ext-title-${idx}`);
-    if (!t || !t.value.trim()) return;
-    
-    let assignee = document.getElementById(`ext-assignee-${idx}`).value;
-    if (assignee === '__other') assignee = prompt('担当者名を入力') || '';
-    
-    const action = {
-      id: 'act-' + Date.now() + '-' + idx,
-      confId,
-      title: t.value.trim(),
-      assignee,
-      deadline: document.getElementById(`ext-deadline-${idx}`).value,
-      priority: tempActions[idx].priority,
-      note: document.getElementById(`ext-note-${idx}`).value,
-      status: '未着手',
-      created: date || new Date().toISOString().split('T')[0],
-      reports: [],
-      approval: null,
-    };
-    newActions.push(action);
-  });
-  
-  const conf = { id: confId, title, date, minutes, actionIds: newActions.map(a => a.id), created: new Date().toISOString() };
-  const confs = getConferences();
-  confs.unshift(conf);
-  saveConferences(confs);
-  
-  const actions = getActions();
-  actions.unshift(...newActions);
-  saveActions(actions);
-  
+function saveConference(){
+  const title=document.getElementById('conf-title').value.trim(),date=document.getElementById('conf-date').value,minutes=document.getElementById('conf-minutes').value.trim();
+  if(!title){alert('カンファレンス名を入力してください');return}
+  const confId='conf-'+Date.now(),newActions=[];
+  tempActions.forEach((_,idx)=>{if(!tempActions[idx])return;const t=document.getElementById(`ext-title-${idx}`);if(!t||!t.value.trim())return;let assignee=document.getElementById(`ext-assignee-${idx}`).value;if(assignee==='__other')assignee=prompt('担当者名を入力')||'';
+    newActions.push({id:'act-'+Date.now()+'-'+idx,confId,title:t.value.trim(),assignee,deadline:document.getElementById(`ext-deadline-${idx}`).value,priority:tempActions[idx].priority,note:document.getElementById(`ext-note-${idx}`).value,status:'未着手',created:date||new Date().toISOString().split('T')[0],reports:[],approval:null})});
+  const conf={id:confId,title,date,minutes,actionIds:newActions.map(a=>a.id),created:new Date().toISOString()};
+  const confs=getConferences();confs.unshift(conf);saveConferences(confs);
+  const actions=getActions();actions.unshift(...newActions);saveActions(actions);
   alert(`✅ 保存しました！\n${newActions.length}件のアクションを作成`);
-  tempActions = [];
-  document.getElementById('extract-list').innerHTML = '';
-  document.getElementById('conf-title').value = '';
-  document.getElementById('conf-minutes').value = '';
-  navTo('s-actions');
+  tempActions=[];document.getElementById('extract-list').innerHTML='';document.getElementById('conf-title').value='';document.getElementById('conf-minutes').value='';navTo('s-actions');
 }
 
 // ===== ACTION LIST =====
-let actionFilter = 'すべて';
-
-function renderActions() {
-  const filterOptions = ['すべて', '未着手', '着手', '進行中', '報告待ち', '完了', '承認済'];
-  document.getElementById('action-filters').innerHTML = filterOptions.map(f =>
-    `<button class="filter-btn ${f === actionFilter ? 'on' : ''}" onclick="setActionFilter('${f}')">${f}</button>`
-  ).join('');
-  
-  let actions = getActions();
-  if (actionFilter !== 'すべて') actions = actions.filter(a => a.status === actionFilter);
-  
-  const list = document.getElementById('action-list');
-  if (actions.length === 0) {
-    list.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">アクションがありません<br>カンファレンスを作成してアクションを追加しましょう</div></div>';
-    return;
-  }
-  list.innerHTML = actions.map(a => renderActionItem(a)).join('');
+let actionFilter='すべて';
+function renderActions(){
+  const opts=['すべて','未着手','着手','進行中','報告待ち','完了','承認済'];
+  document.getElementById('action-filters').innerHTML=opts.map(f=>`<button class="filter-btn ${f===actionFilter?'on':''}" onclick="setActionFilter('${f}')">${f}</button>`).join('');
+  let actions=getActions();if(actionFilter!=='すべて')actions=actions.filter(a=>a.status===actionFilter);
+  document.getElementById('action-list').innerHTML=actions.length===0?'<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">アクションがありません</div></div>':actions.map(a=>renderActionItem(a)).join('');
 }
+function setActionFilter(f){actionFilter=f;renderActions()}
 
-function setActionFilter(f) {
-  actionFilter = f;
-  renderActions();
-}
-
-function renderActionItem(a) {
-  const priClass = a.priority === '高' ? 'pri-high' : a.priority === '低' ? 'pri-low' : 'pri-mid';
-  const statusBadge = {
-    '未着手': 'badge-gray', '着手': 'badge-primary', '進行中': 'badge-warn',
-    '報告待ち': 'badge-purple', '完了': 'badge-success', '承認済': 'badge-accent',
-  }[a.status] || 'badge-gray';
-  
-  const isOverdue = a.deadline && a.status !== '完了' && a.status !== '承認済' && a.deadline < new Date().toISOString().split('T')[0];
-  
-  return `<div class="action-item ${priClass}" onclick="showActionDetail('${a.id}')">
-    <div class="action-top">
-      <div class="action-title">${a.title}</div>
-      <span class="badge ${statusBadge}">${a.status}</span>
-    </div>
-    <div class="action-meta">
-      <span class="action-meta-item">👤 ${a.assignee || '未定'}</span>
-      <span class="action-meta-item" ${isOverdue ? 'style="color:var(--c-danger);font-weight:700"' : ''}>📅 ${a.deadline || '未定'}${isOverdue ? ' ⚠️期限超過' : ''}</span>
-      <span class="action-meta-item">⚡ ${a.priority}</span>
-    </div>
-  </div>`;
+function renderActionItem(a){
+  const pc=a.priority==='高'?'pri-high':a.priority==='低'?'pri-low':'pri-mid',sb={'未着手':'badge-gray','着手':'badge-primary','進行中':'badge-warn','報告待ち':'badge-purple','完了':'badge-success','承認済':'badge-accent'}[a.status]||'badge-gray',od=a.deadline&&a.status!=='完了'&&a.status!=='承認済'&&a.deadline<new Date().toISOString().split('T')[0];
+  return`<div class="action-item ${pc}" onclick="showActionDetail('${a.id}')"><div class="action-top"><div class="action-title">${a.title}</div><span class="badge ${sb}">${a.status}</span></div><div class="action-meta"><span class="action-meta-item">👤 ${a.assignee||'未定'}</span><span class="action-meta-item" ${od?'style="color:var(--c-danger);font-weight:700"':''}>📅 ${a.deadline||'未定'}${od?' ⚠️超過':''}</span><span class="action-meta-item">⚡ ${a.priority}</span></div></div>`;
 }
 
 // ===== ACTION DETAIL =====
-function showActionDetail(id) {
-  const actions = getActions();
-  const a = actions.find(x => x.id === id);
-  if (!a) return;
-  
-  const settings = getSettings();
-  const staffOpts = settings.staff.map(s => `<option value="${s}" ${s === a.assignee ? 'selected' : ''}>${s}</option>`).join('');
-  const managerOpts = settings.managers.map(m => `<option value="${m}">${m}</option>`).join('');
-  
-  const statusOptions = ['未着手', '着手', '進行中', '報告待ち', '完了'].map(s =>
-    `<option value="${s}" ${s === a.status ? 'selected' : ''}>${s}</option>`
-  ).join('');
-  
-  const reportsHtml = (a.reports || []).map((r, i) => `
-    <div class="report-box">
-      <div class="report-header">
-        <span class="report-title">📝 報告 #${i + 1}</span>
-        <span class="report-date">${r.date}</span>
-      </div>
-      <div class="report-text">${r.text}</div>
-    </div>
-  `).join('');
-  
-  const approvalHtml = a.approval
-    ? `<div class="card" style="border-left:4px solid var(--c-success)">
-         <div style="display:flex;align-items:center;gap:8px">
-           <span style="font-size:24px">✅</span>
-           <div>
-             <div style="font-weight:700;font-size:14px">承認済み</div>
-             <div style="font-size:12px;color:var(--c-text2)">${a.approval.manager} — ${a.approval.date}</div>
-           </div>
-         </div>
-       </div>`
-    : '';
-  
-  document.getElementById('detail-content').innerHTML = `
-    <div class="card" style="border-left:4px solid ${a.priority === '高' ? 'var(--c-danger)' : a.priority === '低' ? 'var(--c-accent)' : 'var(--c-warn)'}">
+function showActionDetail(id){
+  const actions=getActions(),a=actions.find(x=>x.id===id);if(!a)return;
+  const s=getSettings(),staffOpts=s.staff.map(x=>`<option value="${x}" ${x===a.assignee?'selected':''}>${x}</option>`).join(''),managerOpts=s.managers.map(m=>`<option value="${m}">${m}</option>`).join(''),statusOpts=['未着手','着手','進行中','報告待ち','完了'].map(x=>`<option value="${x}" ${x===a.status?'selected':''}>${x}</option>`).join('');
+  const rh=(a.reports||[]).map((r,i)=>`<div class="report-box"><div class="report-header"><span class="report-title">📝 報告 #${i+1}</span><span class="report-date">${r.date}</span></div><div class="report-text">${r.text}</div></div>`).join('');
+  const ah=a.approval?`<div class="card" style="border-left:4px solid var(--c-success)"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:24px">✅</span><div><div style="font-weight:700">承認済み</div><div style="font-size:12px;color:var(--c-text2)">${a.approval.manager} — ${a.approval.date}</div></div></div></div>`:'';
+  document.getElementById('detail-content').innerHTML=`
+    <div class="card" style="border-left:4px solid ${a.priority==='高'?'var(--c-danger)':a.priority==='低'?'var(--c-accent)':'var(--c-warn)'}">
       <div style="font-size:17px;font-weight:900;margin-bottom:12px">${a.title}</div>
-      ${a.note ? `<div style="font-size:13px;color:var(--c-text2);margin-bottom:12px;line-height:1.6">💬 ${a.note}</div>` : ''}
+      ${a.note?`<div style="font-size:13px;color:var(--c-text2);margin-bottom:12px;line-height:1.6">💬 ${a.note}</div>`:''}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div>
-          <label class="form-label">📊 ステータス</label>
-          <select class="form-input" id="det-status" onchange="updateAction('${a.id}','status',this.value)">${statusOptions}</select>
-        </div>
-        <div>
-          <label class="form-label">👤 担当者</label>
-          <select class="form-input" id="det-assignee" onchange="updateAction('${a.id}','assignee',this.value)">
-            <option value="">未定</option>${staffOpts}
-          </select>
-        </div>
-        <div>
-          <label class="form-label">📅 期限</label>
-          <input type="date" class="form-input" value="${a.deadline || ''}" onchange="updateAction('${a.id}','deadline',this.value)">
-        </div>
-        <div>
-          <label class="form-label">⚡ 重要度</label>
-          <select class="form-input" onchange="updateAction('${a.id}','priority',this.value)">
-            <option value="高" ${a.priority === '高' ? 'selected' : ''}>🔴 高</option>
-            <option value="中" ${a.priority === '中' ? 'selected' : ''}>🟡 中</option>
-            <option value="低" ${a.priority === '低' ? 'selected' : ''}>🟢 低</option>
-          </select>
-        </div>
-      </div>
-      <div style="font-size:11px;color:var(--c-text3);margin-top:12px">作成日: ${a.created}</div>
-    </div>
-    
-    <div class="section"><div class="section-title">途中報告</div></div>
-    ${reportsHtml}
-    <div class="form-group">
-      <textarea class="form-input" id="report-text" placeholder="報告内容を入力..." style="min-height:80px"></textarea>
-    </div>
+        <div><label class="form-label">📊 ステータス</label><select class="form-input" onchange="updateAction('${a.id}','status',this.value)">${statusOpts}</select></div>
+        <div><label class="form-label">👤 担当者</label><select class="form-input" onchange="updateAction('${a.id}','assignee',this.value)"><option value="">未定</option>${staffOpts}</select></div>
+        <div><label class="form-label">📅 期限</label><input type="date" class="form-input" value="${a.deadline||''}" onchange="updateAction('${a.id}','deadline',this.value)"></div>
+        <div><label class="form-label">⚡ 重要度</label><select class="form-input" onchange="updateAction('${a.id}','priority',this.value)"><option value="高" ${a.priority==='高'?'selected':''}>🔴 高</option><option value="中" ${a.priority==='中'?'selected':''}>🟡 中</option><option value="低" ${a.priority==='低'?'selected':''}>🟢 低</option></select></div>
+      </div><div style="font-size:11px;color:var(--c-text3);margin-top:12px">作成日: ${a.created}</div></div>
+    <div class="section"><div class="section-title">途中報告</div></div>${rh}
+    <div class="form-group"><textarea class="form-input" id="report-text" placeholder="報告内容を入力..." style="min-height:80px"></textarea></div>
     <button class="btn btn-primary btn-full" onclick="addReport('${a.id}')">📝 報告を追加</button>
-    <div class="spacer"></div>
-    
-    <div class="section"><div class="section-title">承認申請</div></div>
-    ${approvalHtml}
-    ${!a.approval ? `
-      <div class="guide-tip" style="background:var(--c-purple)">
-        <span class="icon">💡</span>
-        <span>アクションが完了したら、上司に承認を申請してください。</span>
-      </div>
-      <div class="form-group">
-        <label class="form-label">👔 承認者を選択</label>
-        <select class="form-input" id="approval-manager">
-          <option value="">選択してください</option>${managerOpts}
-        </select>
-      </div>
-      <button class="btn btn-accent btn-full" onclick="requestApproval('${a.id}')">✅ 承認を申請</button>
-    ` : ''}
-    <div class="spacer"></div>
-    <button class="btn btn-danger btn-full" onclick="if(confirm('このアクションを削除しますか？'))deleteAction('${a.id}')">🗑 アクションを削除</button>
-  `;
-  
+    <div class="spacer"></div><div class="section"><div class="section-title">承認</div></div>${ah}
+    ${!a.approval?`<div class="form-group"><label class="form-label">👔 承認者</label><select class="form-input" id="approval-manager"><option value="">選択</option>${managerOpts}</select></div><button class="btn btn-accent btn-full" onclick="requestApproval('${a.id}')">✅ 承認を申請</button>`:''}
+    <div class="spacer"></div><button class="btn btn-danger btn-full" onclick="if(confirm('削除しますか？'))deleteAction('${a.id}')">🗑 削除</button>`;
   navTo('s-action-detail');
 }
+function updateAction(id,f,v){const a=getActions(),x=a.find(i=>i.id===id);if(x){x[f]=v;saveActions(a)}}
+function addReport(id){const text=document.getElementById('report-text').value.trim();if(!text){alert('報告内容を入力してください');return}const a=getActions(),x=a.find(i=>i.id===id);if(x){if(!x.reports)x.reports=[];x.reports.push({text,date:new Date().toISOString().split('T')[0]});x.status='報告待ち';saveActions(a);showActionDetail(id)}}
+function requestApproval(id){const m=document.getElementById('approval-manager').value;if(!m){alert('承認者を選択してください');return}const a=getActions(),x=a.find(i=>i.id===id);if(x){x.approval={manager:m,date:new Date().toISOString().split('T')[0]};x.status='承認済';saveActions(a);showActionDetail(id);alert(`✅ ${m}さんの承認を記録しました`)}}
+function deleteAction(id){saveActions(getActions().filter(a=>a.id!==id));goBack()}
 
-function updateAction(id, field, value) {
-  const actions = getActions();
-  const a = actions.find(x => x.id === id);
-  if (a) { a[field] = value; saveActions(actions); }
+// ===== HISTORY =====
+function renderHistory(){
+  const c=getConferences();document.getElementById('history-list').innerHTML=c.length===0?'<div class="empty"><div class="empty-icon">📁</div><div class="empty-text">記録がありません</div></div>':c.map(x=>`<div class="conf-item" onclick="showConfDetail('${x.id}')"><div class="conf-item-date">${x.date||''}</div><div class="conf-item-title">${x.title}</div><div class="conf-item-meta"><span class="badge badge-primary">📋 ${(x.actionIds||[]).length}件</span></div></div>`).join('');
 }
-
-function addReport(id) {
-  const text = document.getElementById('report-text').value.trim();
-  if (!text) { alert('報告内容を入力してください'); return; }
-  const actions = getActions();
-  const a = actions.find(x => x.id === id);
-  if (a) {
-    if (!a.reports) a.reports = [];
-    a.reports.push({ text, date: new Date().toISOString().split('T')[0] });
-    a.status = '報告待ち';
-    saveActions(actions);
-    showActionDetail(id);
-  }
-}
-
-function requestApproval(id) {
-  const manager = document.getElementById('approval-manager').value;
-  if (!manager) { alert('承認者を選択してください'); return; }
-  const actions = getActions();
-  const a = actions.find(x => x.id === id);
-  if (a) {
-    a.approval = { manager, date: new Date().toISOString().split('T')[0], status: '承認済' };
-    a.status = '承認済';
-    saveActions(actions);
-    showActionDetail(id);
-    alert(`✅ ${manager}さんの承認を記録しました`);
-  }
-}
-
-function deleteAction(id) {
-  let actions = getActions();
-  actions = actions.filter(a => a.id !== id);
-  saveActions(actions);
-  goBack();
-}
-
-// ===== CONFERENCE HISTORY =====
-function renderHistory() {
-  const confs = getConferences();
-  const list = document.getElementById('history-list');
-  if (confs.length === 0) {
-    list.innerHTML = '<div class="empty"><div class="empty-icon">📁</div><div class="empty-text">カンファレンスの記録がありません</div></div>';
-    return;
-  }
-  list.innerHTML = confs.map(c => {
-    const actionCount = (c.actionIds || []).length;
-    return `<div class="conf-item" onclick="showConfDetail('${c.id}')">
-      <div class="conf-item-date">${c.date || '日付なし'}</div>
-      <div class="conf-item-title">${c.title}</div>
-      <div class="conf-item-meta">
-        <span class="badge badge-primary">📋 ${actionCount}件のアクション</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function showConfDetail(id) {
-  const confs = getConferences();
-  const c = confs.find(x => x.id === id);
-  if (!c) return;
-  
-  const actions = getActions().filter(a => a.confId === id);
-  const actionsHtml = actions.length > 0
-    ? actions.map(a => renderActionItem(a)).join('')
-    : '<div style="padding:16px;color:var(--c-text3);text-align:center">アクションなし</div>';
-  
-  document.getElementById('conf-detail-content').innerHTML = `
-    <div class="card">
-      <div style="font-family:var(--mono);font-size:13px;color:var(--c-primary);margin-bottom:6px">${c.date}</div>
-      <div style="font-size:17px;font-weight:900;margin-bottom:12px">${c.title}</div>
-      <div style="font-size:13px;color:var(--c-text2);line-height:1.8;white-space:pre-wrap;max-height:300px;overflow-y:auto">${c.minutes || '議事録なし'}</div>
-    </div>
-    <div class="section"><div class="section-title">関連アクション</div></div>
-    ${actionsHtml}
-    <div class="spacer"></div>
-    <button class="btn btn-danger btn-full" onclick="if(confirm('このカンファレンスを削除しますか？'))deleteConf('${c.id}')">🗑 カンファレンスを削除</button>
-  `;
+function showConfDetail(id){
+  const c=getConferences().find(x=>x.id===id);if(!c)return;const acts=getActions().filter(a=>a.confId===id);
+  document.getElementById('conf-detail-content').innerHTML=`<div class="card"><div style="font-family:var(--mono);font-size:13px;color:var(--c-primary);margin-bottom:6px">${c.date}</div><div style="font-size:17px;font-weight:900;margin-bottom:12px">${c.title}</div><div style="font-size:13px;color:var(--c-text2);line-height:1.8;white-space:pre-wrap;max-height:300px;overflow-y:auto">${c.minutes||'議事録なし'}</div></div><div class="section"><div class="section-title">関連アクション</div></div>${acts.length>0?acts.map(a=>renderActionItem(a)).join(''):'<div style="padding:16px;color:var(--c-text3);text-align:center">なし</div>'}<div class="spacer"></div><button class="btn btn-danger btn-full" onclick="if(confirm('削除しますか？'))deleteConf('${c.id}')">🗑 削除</button>`;
   navTo('s-conf-detail');
 }
-
-function deleteConf(id) {
-  let confs = getConferences();
-  confs = confs.filter(c => c.id !== id);
-  saveConferences(confs);
-  goBack();
-}
+function deleteConf(id){saveConferences(getConferences().filter(c=>c.id!==id));goBack()}
 
 // ===== SETTINGS =====
-function loadSettings() {
-  const s = getSettings();
-  document.getElementById('set-staff').value = (s.staff || []).join('\n');
-  document.getElementById('set-managers').value = (s.managers || []).join('\n');
-}
+function loadSettings(){const s=getSettings();document.getElementById('set-staff').value=(s.staff||[]).join('\n');document.getElementById('set-managers').value=(s.managers||[]).join('\n');document.getElementById('set-anthropic-key').value=s.anthropicKey||''}
+function saveSettings(){DB.set('settings',{staff:document.getElementById('set-staff').value.split('\n').map(x=>x.trim()).filter(Boolean),managers:document.getElementById('set-managers').value.split('\n').map(x=>x.trim()).filter(Boolean),anthropicKey:document.getElementById('set-anthropic-key').value.trim()});alert('✅ 設定を保存しました')}
 
-function saveSettings() {
-  const s = {
-    staff: document.getElementById('set-staff').value.split('\n').map(x => x.trim()).filter(Boolean),
-    managers: document.getElementById('set-managers').value.split('\n').map(x => x.trim()).filter(Boolean),
-  };
-  DB.set('settings', s);
-  alert('✅ 設定を保存しました');
-}
+function exportData(){const d={settings:getSettings(),conferences:getConferences(),actions:getActions(),exported:new Date().toISOString()};const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=`conf-backup-${new Date().toISOString().split('T')[0]}.json`;a.click();URL.revokeObjectURL(u)}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.settings)DB.set('settings',d.settings);if(d.conferences)saveConferences(d.conferences);if(d.actions)saveActions(d.actions);alert('✅ インポートしました');location.reload()}catch{alert('❌ 失敗しました')}};r.readAsText(f);e.target.value=''}
 
-// ===== EXPORT / IMPORT =====
-function exportData() {
-  const data = {
-    settings: getSettings(),
-    conferences: getConferences(),
-    actions: getActions(),
-    exported: new Date().toISOString(),
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = `conf-backup-${new Date().toISOString().split('T')[0]}.json`;
-  a.click(); URL.revokeObjectURL(url);
-}
-
-function importData(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    try {
-      const data = JSON.parse(ev.target.result);
-      if (data.settings) DB.set('settings', data.settings);
-      if (data.conferences) saveConferences(data.conferences);
-      if (data.actions) saveActions(data.actions);
-      alert('✅ データをインポートしました');
-      location.reload();
-    } catch { alert('❌ ファイルの読み込みに失敗しました'); }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-}
-
-// ===== MODAL =====
-function openModal(html) {
-  document.getElementById('modal-content').innerHTML = html;
-  document.getElementById('modal').classList.add('show');
-}
-function closeModal() {
-  document.getElementById('modal').classList.remove('show');
-}
-
-// ===== INIT =====
 renderHome();
-
-// Service Worker for PWA
-if ('serviceWorker' in navigator) {
-  const swCode = `
-    const CACHE = 'conf-v2';
-    self.addEventListener('install', e => e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', './index.html']))));
-    self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(res => { caches.open(CACHE).then(c => c.put(e.request, res.clone())); return res; }).catch(() => caches.match('./index.html')))));
-  `;
-  const blob = new Blob([swCode], { type: 'application/javascript' });
-  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
-}
+if('serviceWorker' in navigator){const sw=`const C='conf-v3';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['./','./index.html']))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{caches.open(C).then(c=>c.put(e.request,res.clone()));return res}).catch(()=>caches.match('./index.html')))));`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{})}
 </script>
 </body>
 </html>
